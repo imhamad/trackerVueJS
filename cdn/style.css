@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#render{
+    min-height: calc(800px - 50px);
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
