@@ -14,9 +14,10 @@
 <body>
 
     <div id="render">
-        <img v-bind:src="picture" alt="Image of User" class="rounded circle mb-3">
+        <img v-bind:src="picture" v-bind:alt="`${firstName} ${lastName}`" v-bind:class="gender">
         <h1>Hello {{firstName}} {{lastName}}</h1>
         <h5>Email: {{email}}</a></h5>
+      <button v-bind:class="gender"> Generate User</button>
     </div>
 
     <script src="https://unpkg.com/vue@3"></script>
