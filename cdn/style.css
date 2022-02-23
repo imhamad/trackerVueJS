@@ -1,12 +1,16 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-#render{
-    min-height: calc(800px - 50px);
+
+#render {
+    height: 100vh;
     display: flex;
     align-content: center;
     align-items: center;
     justify-content: center;
+    margin: auto;
+    text-align: center;
+    flex-direction: column;
 }
