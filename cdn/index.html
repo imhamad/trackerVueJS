@@ -17,7 +17,7 @@
         <img v-bind:src="picture" v-bind:alt="`${firstName} ${lastName}`" v-bind:class="gender">
         <h1>Hello {{firstName}} {{lastName}}</h1>
         <h5>Email: {{email}}</a></h5>
-      <button v-bind:class="gender"> Generate User</button>
+      <button v-on:click="getUser()" v-bind:class="gender"> Generate User</button>
     </div>
 
     <script src="https://unpkg.com/vue@3"></script>
