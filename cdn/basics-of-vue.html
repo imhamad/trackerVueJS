@@ -10,20 +10,34 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/vue@3"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <style>
+        .v-header {
+            background: lightcyan;
+            padding: 2em 3em;
+            border: 1px solid #f8f8f8;
+        }
+    </style>
 </head>
 
 <body>
 
 <div id="render">
-    <img v-bind:src="picture" v-bind:alt="`${firstName} ${lastName}`" v-bind:class="gender">
-    <h1>Bonjour {{ firstName }} {{ lastName }}</h1>
-    <h6 class="link-color">Email: {{ email }}</h6>
-    <button v-on:click="getUser()" v-bind:class="gender"> Generate User</button>
+    <div class="v-header">
+        <h1>{{header}}</h1>
+        <input v-model="header" class="form form-control">
+    </div>
 </div>
 
-
-<script src="app.js"></script>
+<script src="basics.js"></script>
 </body>
-
-</html>
+<script>
+    const psl = Vue.createApp({
+        data() {
+            return {
+                header: 'Hey its psl final today'
+            }
+        },
+    })
+        psl.mount('.v-header');
+</script>
+</html>g
