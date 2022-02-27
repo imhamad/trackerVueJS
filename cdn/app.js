@@ -1,7 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
-            firstName: 'John',
+            firstName: 'Hamad',
             lastName: 'K',
             email: 'hamad@netchainmedia.com',
             gender: 'male',
