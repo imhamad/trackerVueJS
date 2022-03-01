@@ -66,16 +66,21 @@
             <tr>
                 <td>Add Data</td>
                 <td><input v-model="newAddition" class="form form-control"></td>
-            <td><input type="submit" class="btn btn-submit btn-primary"></td>
+                <td>
+                    <button type="submit" class="btn btn-submit btn-primary" v-on:click="intended_for.push(newAddition)">Save
+                        Input
+                    </button>
+                </td>
             </tr>
-            <td>Intended for</td>
-            <td>
-                <ul>
-                    <li v-for="intended in intended_for">{{ intended }}</li>
-                  
-                </ul>
-            </td>
-            <td><input type="submit" class="btn btn-submit btn-primary"></td>
+            <tr>
+                <td>Intended for</td>
+                <td>
+                    <select name="Go" id="" class="form form-control">Where you'd like to go
+                        <option value="" selected disabled>Intended for</option>
+                        <option value="" v-for="intended in intended_for">{{ intended }}</option>
+                    </select>
+                </td>
+                <td><input type="submit" class="btn btn-submit btn-primary"></td>
             </tr>
         </table>
     </div>
@@ -92,10 +97,10 @@
                 employ: 'Hi Employ',
                 newAddition: '',
                 intended_for: [
-                    'Managers',
-                    'Employs',
-                    'Outside Staff',
-                    'Testing Branch',
+                    'Manager',
+                    'Employ',
+                    'Ed',
+                    'David Waisy',
                 ]
 
             }
