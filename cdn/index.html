@@ -19,7 +19,7 @@
     <img v-bind:src="picture" v-bind:alt="`${firstName} ${lastName}`" v-bind:class="gender">
     <h1>Bonjour {{ firstName }} {{ lastName }}</h1>
     <h6 class="link-color">Email: {{ email }}</h6>
-    <button v-on:click="getUser()" v-bind:class="gender"> Generate User</button>
+    <button v-on:click="getUser" v-bind:class="gender"> Generate User</button>
 </div>
 
 

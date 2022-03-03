@@ -65,9 +65,15 @@
             <tr>
             <tr>
                 <td>Add Data</td>
-                <td><input v-model="newAddition" class="form form-control"></td>
+                <!--v-on:keyup.enter is directive of vue to have it work on enter -->
+<!--            v-on shortcut is @-->
+                <td><input v-on:keyup.enter="saveItem"
+                           v-model="newAddition"
+                           class="form form-control">
+                </td>
                 <td>
-                    <button type="submit" class="btn btn-submit btn-primary" v-on:click="intended_for.push(newAddition)">Save
+                    <button type="submit" class="btn btn-submit btn-primary"
+                            @click="saveItem">Save
                         Input
                     </button>
                 </td>
@@ -105,6 +111,12 @@
 
             }
         },
+        methods:{
+            saveItem(){
+                this.intended_for.push(this.newAddition)
+                this.newAddition = ""
+            }
+        }
     })
     role.mount('.v-header');
 </script>
