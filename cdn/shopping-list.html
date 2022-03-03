@@ -6,7 +6,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User Generator</title>
+    <title>Shopping List</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/vue@next"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -36,18 +36,21 @@
             padding: .5em;
             border: 1px solid #f2f2f2;
         }
-        .shopping-list{
-            width: 50%!important;
+
+        .shopping-list {
+            width: 50% !important;
             text-align: center;
             margin: auto;
             margin-top: 1em;
 
         }
-        .shopping-list .panel{
+
+        .shopping-list .panel {
             border: 1px solid #cecece;
             border-radius: 15px;
         }
-        li::marker{
+
+        li::marker {
             content: '->';
             color: cornsilk;
             font-family: AkayaKanadaka;
@@ -65,18 +68,24 @@
             <quote>`{{ superheader }}`</quote>
         </div>
         <div class="shopping-wrapper">
-           <table>
-               <tr>
-                   <td> <input @keyup.enter="setList" v-model="list" class="form form-control text-center" placeholder="Inlist your shopping items"></td>
-                   <td><button class="btn btn-success align-left" v-on:click="setList">Submit</button></td>
-               </tr>
-           </table>
+            <table>
+                <tr>
+                    <td style="width: 95%"><input @keyup.down="setList" v-model="list"
+                                                  class="form form-control text-center"
+                                                  placeholder="Inlist your shopping items"></td>
+                    <td>
+                        <button class="btn btn-success align-left" v-on:click="setList">Submit</button>
+                    </td>
+                </tr>
+            </table>
         </div>
         <div class="shopping-list w-50 ">
             <div class="panel bg-white m-auto p-1 text-center">
-<ul>
-    <li v-for="item in items" style="border-bottom: 1px solid #cecece;">{{ item }}</li>
-</ul>
+                <ul>
+                    <li v-for="item in items" style="border-bottom: 1px solid #cecece;">{{ item }}</li>
+                </ul>
+                <p v-if="items.length === 0"><em>Nice Job! Look like you've purchased everything you need, em em!
+                    ;)</em></p>
             </div>
         </div>
     </div>
@@ -91,15 +100,15 @@
                 superheader: 'Shopping-list APP',
                 list: '',
                 items: [
-                    'Oil',
-                    'Candys',
+                    // 'Oil',
+                    // 'Candys',
 
                 ],
 
             }
         },
-        methods:{
-            setList(){
+        methods: {
+            setList() {
                 this.items.push(this.list);
                 this.list = '';
             }
