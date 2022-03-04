@@ -67,10 +67,14 @@
         <div class="h2 text-center">
             <quote>`{{ superheader }}`</quote>
         </div>
-        <div class="shopping-wrapper">
+        <table class="tr">
+            <td><button class="btn-danger" v-if="available">Cancel</button></td>
+            <td><button class="btn-success" v-else>AddItem</button></td>
+        </table>
+        <div class="shopping-wrapper" v-if="available">
             <table>
                 <tr>
-                    <td style="width: 95%"><input @keyup.down="setList" v-model="list"
+                    <td style="width: 95%"><input @keyup.enter="setList" v-model="list"
                                                   class="form form-control text-center"
                                                   placeholder="Inlist your shopping items"></td>
                     <td>
@@ -97,6 +101,7 @@
     const list = Vue.createApp({
         data() {
             return {
+                available: false,
                 superheader: 'Shopping-list APP',
                 list: '',
                 items: [
@@ -111,7 +116,11 @@
             setList() {
                 this.items.push(this.list);
                 this.list = '';
-            }
+            },
+            doEdit(){
+                this.available = available
+
+            },
         },
     })
     list.mount('.v-header');
