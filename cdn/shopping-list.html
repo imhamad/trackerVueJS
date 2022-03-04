@@ -22,6 +22,7 @@
             text-align: center;
             margin: auto;
             width: 100%;
+            border-radius: 15px;
 
         }
 
@@ -64,13 +65,23 @@
 <div id="render">
 
     <div class="v-header">
-        <div class="h2 text-center">
-            <quote>`{{ superheader }}`</quote>
+        <div class="h2 text-center ">
+            <quote class="mr-4">`{{ superheader }}`</quote>
+
+            <button class="btn-danger ml-2"
+
+                    v-if="available"
+                    v-on:click="doEdit(false)"
+
+            >Cancel
+            </button>
+            <button class="btn-success ml-2 pl-4"
+                    v-on:click="doEdit(true)"
+                    v-else>AddItem
+            </button>
+
         </div>
-        <table class="tr">
-            <td><button class="btn-danger" v-if="available">Cancel</button></td>
-            <td><button class="btn-success" v-else>AddItem</button></td>
-        </table>
+
         <div class="shopping-wrapper" v-if="available">
             <table>
                 <tr>
@@ -104,11 +115,7 @@
                 available: false,
                 superheader: 'Shopping-list APP',
                 list: '',
-                items: [
-                    // 'Oil',
-                    // 'Candys',
-
-                ],
+                items: [],
 
             }
         },
@@ -117,8 +124,9 @@
                 this.items.push(this.list);
                 this.list = '';
             },
-            doEdit(){
-                this.available = available
+            doEdit(available) {
+                this.available = available;
+                this.list = '';
 
             },
         },
