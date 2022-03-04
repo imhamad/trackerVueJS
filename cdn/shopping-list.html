@@ -90,6 +90,7 @@
                                                   placeholder="Inlist your shopping items"></td>
                     <td>
                         <button class="btn btn-success align-left" v-on:click="setList">Submit</button>
+
                     </td>
                 </tr>
             </table>
@@ -97,10 +98,13 @@
         <div class="shopping-list w-50 ">
             <div class="panel bg-white m-auto p-1 text-center">
                 <ul>
+                    <a v-bind:href="list" target="_blank">Dynamic Link</a>
                     <li v-for="item in items" style="border-bottom: 1px solid #cecece;">{{ item }}</li>
+
                 </ul>
                 <p v-if="items.length === 0"><em>Nice Job! Look like you've purchased everything you need, em em!
                     ;)</em></p>
+
             </div>
         </div>
     </div>
