@@ -57,6 +57,15 @@
             font-family: AkayaKanadaka;
         }
 
+        .strikethrough {
+            text-decoration: line-through;
+            text-decoration-color: cornsilk;
+        }
+
+        .prior {
+            color: darkgoldenrod !important;
+        }
+
     </style>
 </head>
 
@@ -85,11 +94,15 @@
         <div class="shopping-wrapper" v-if="available">
             <table>
                 <tr>
-                    <td style="width: 95%"><input @keyup.enter="setList" v-model="list"
+                    <td style="width: 100%; display: flex; align-items: center;"><input v-model="list"
                                                   class="form form-control text-center"
-                                                  placeholder="Inlist your shopping items"></td>
+                                                  placeholder="Inlist your shopping items" @keyup.enter="setList">
+                    <span style="align-content: center; align-items: center; vertical-align: middle;" class="counter pl-2">{{limit}}/150</span>
+                    </td>
                     <td>
-                        <button class="btn btn-success align-left" v-on:click="setList">Submit</button>
+                        <button class="btn btn-success align-left" v-on:click="setList"
+                                v-bind:disabled="list.length === 0">Submit
+                        </button>
 
                     </td>
                 </tr>
@@ -98,8 +111,18 @@
         <div class="shopping-list w-50 ">
             <div class="panel bg-white m-auto p-1 text-center">
                 <ul>
-                    <a v-bind:href="list" target="_blank">Dynamic Link</a>
-                    <li v-for="item in items" style="border-bottom: 1px solid #cecece;">{{ item }}</li>
+                    <!--                    <a v-bind:href="list" target="_blank">Dynamic Link</a>-->
+                    <!--                    Types of class v-bind:class="{strikethrough: item.purchased} -->
+                    <li
+                            v-on:click="togglePurchased(item)"
+                            v-for="item in items" style="border-bottom: 1px solid #cecece;"
+                            v-bind:class="[item.purchased ? 'strikethrough text-muted' : 'underline',
+                        item.prior ? 'prior' : 'not-prior'
+                        ]
+
+"
+                    >{{ item.label }}
+                    </li>
 
                 </ul>
                 <p v-if="items.length === 0"><em>Nice Job! Look like you've purchased everything you need, em em!
@@ -113,19 +136,33 @@
 <script src="basics.js"></script>
 </body>
 <script>
-    const list = Vue.createApp({
+    const ulist = Vue.createApp({
         data() {
             return {
                 available: false,
                 superheader: 'Shopping-list APP',
                 list: '',
-                items: [],
+                items: [
+                    {
+                        label: 'Onions',
+                        purchased: true,
+                        prior: true,
+                    },
+                    {
+                        label: 'Potatos',
+                        purchased: false,
+                        prior: false,
+                    },
+                ],
 
             }
         },
         methods: {
             setList() {
-                this.items.push(this.list);
+                this.items.push({
+                    label: this.list,
+                    purchased: false,
+                });
                 this.list = '';
             },
             doEdit(available) {
@@ -133,8 +170,16 @@
                 this.list = '';
 
             },
+            togglePurchased(item) {
+                item.purchased = !item.purchased;
+            },
         },
+        computed:{
+            limit(){
+                return this.list.length;
+            }
+        }
     })
-    list.mount('.v-header');
+    ulist.mount('.v-header');
 </script>
 </html>
