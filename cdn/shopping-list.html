@@ -97,7 +97,7 @@
                     <td style="width: 100%; display: flex; align-items: center;"><input v-model="list"
                                                   class="form form-control text-center"
                                                   placeholder="Inlist your shopping items" @keyup.enter="setList">
-                    <span style="align-content: center; align-items: center; vertical-align: middle;" class="counter pl-2">{{limit}}/150</span>
+                    <span style="align-content: center; align-items: center; vertical-align: middle;" class="counter pl-2">{{ limit }}/150</span>
                     </td>
                     <td>
                         <button class="btn btn-success align-left" v-on:click="setList"
@@ -115,7 +115,7 @@
                     <!--                    Types of class v-bind:class="{strikethrough: item.purchased} -->
                     <li
                             v-on:click="togglePurchased(item)"
-                            v-for="item in items" style="border-bottom: 1px solid #cecece;"
+                            v-for="item in reversedItem" style="border-bottom: 1px solid #cecece;"
                             v-bind:class="[item.purchased ? 'strikethrough text-muted' : 'underline',
                         item.prior ? 'prior' : 'not-prior'
                         ]
@@ -177,9 +177,14 @@
         computed:{
             limit(){
                 return this.list.length;
+            },
+            reversedItem(){
+            return [...this.items].reverse()
             }
         }
     })
     ulist.mount('.v-header');
+
+    // computed properties are very powerful for incapusalting data and manipulation
 </script>
 </html>
