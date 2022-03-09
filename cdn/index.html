@@ -3,27 +3,23 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>User Generator</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/vue@3"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
 </head>
 
 <body>
-
-<div id="render">
     <img v-bind:src="picture" v-bind:alt="`${firstName} ${lastName}`" v-bind:class="gender">
-    <h1>Bonjour {{ firstName }} {{ lastName }}</h1>
-    <h6 class="link-color">Email: {{ email }}</h6>
-    <button v-on:click="getUser" v-bind:class="gender"> Generate User</button>
-</div>
+    <div id="render">
+        <h1>Bonjour {{ firstName }} {{ lastName }}</h1>
+        <h6 class="link-color">Email: {{ email }}</h6>
+        <button v-on:click="getUser" v-bind:class="gender"> Generate User</button>
+    </div>
 
-
-<script src="app.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
